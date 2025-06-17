@@ -2,12 +2,25 @@ import asyncio
 import importlib
 from pyrogram import idle
 from Safegram import Safegram, initialize_bot
-from Safegram.modules import ALL_MODULES
+from Safegram.modules import ALL_MODULES as MODULES
+from Safegram.mongo import ALL_MODULES as MONGO_MODULES
 from config import LOGGER_ID
 
+
 async def start_bot():
-    for module in ALL_MODULES:
-        importlib.import_module(f"Safegram.modules.{module}")
+    for mod in MODULES:
+        try:
+            importlib.import_module(f"Safegram.modules.{mod}")
+        except Exception as err:
+            print(f"❌ Error importing module '{mod}': {err}")
+            raise
+
+    for mongo_mod in MONGO_MODULES:
+        try:
+            importlib.import_module(f"Safegram.mongo.{mongo_mod}")
+        except Exception as err:
+            print(f"❌ Error importing mongo module '{mongo_mod}': {err}")
+            raise
 
     await initialize_bot()
 
