@@ -1,15 +1,31 @@
-from os import getenv
+import os
 from dotenv import load_dotenv
-from pyrogram import filters
 
+# Load .env file if present
 load_dotenv()
 
-API_ID = int(getenv("API_ID"))
-API_HASH = getenv("API_HASH")
-BOT_TOKEN = getenv("BOT_TOKEN")
-BOT_USERNAME = getenv("BOT_USERNAME")
-OWNER_ID = int(getenv("OWNER_ID"))
-LOGGER_ID = int(getenv("LOGGER_ID"))
-MONGO_URL = getenv("MONGO_URL")
+def get_env_variable(name: str, required: bool = True, cast_func=None):
+    value = os.getenv(name)
 
-SUDOERS = filters.user([7044783841])
+    if value is None:
+        if required:
+            raise EnvironmentError(f"Required environment variable '{name}' not set.")
+        return None
+
+    if cast_func:
+        try:
+            return cast_func(value)
+        except ValueError:
+            raise ValueError(f"Environment variable '{name}' could not be casted using {cast_func.__name__}.")
+
+    return value
+
+# Telegram API credentials
+API_ID = get_env_variable("API_ID", cast_func=int)
+API_HASH = get_env_variable("API_HASH")
+BOT_TOKEN = get_env_variable("BOT_TOKEN")
+
+# Bot configuration
+OWNER_ID = get_env_variable("OWNER_ID", cast_func=int)
+LOGGER_ID = get_env_variable("LOGGER_ID", cast_func=int)
+MONGO_URL = get_env_variable("MONGO_URL")

@@ -1,1 +1,1 @@
-worker: python -m PROTECTOR
+worker: python -m Safegram
