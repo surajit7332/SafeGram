@@ -1,7 +1,6 @@
 import os
 from dotenv import load_dotenv
 
-# Load .env file if present
 load_dotenv()
 
 def get_env_variable(name: str, required: bool = True, cast_func=None):
