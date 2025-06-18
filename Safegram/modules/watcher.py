@@ -1,51 +1,57 @@
+from __future__ import annotations
+
+from pyrogram.enums import ChatMemberStatus
 from pyrogram.types import ChatMemberUpdated
+
 from config import LOGGER_ID
 from Safegram import Safegram
 from Safegram.mongo.chatsdb import add_chat, remove_chat
 
 @Safegram.on_chat_member_updated()
-async def handle_bot_group_events(_, update: ChatMemberUpdated):
-    if not update.new_chat_member.user.is_self:
+async def bot_membership_watcher(_, update: ChatMemberUpdated) -> None:
+    member = None
+    if update.new_chat_member and update.new_chat_member.user and update.new_chat_member.user.is_self:
+        member = update.new_chat_member
+    elif update.old_chat_member and update.old_chat_member.user and update.old_chat_member.user.is_self:
+        member = update.old_chat_member
+
+    if member is None:
         return
 
     chat = update.chat
     chat_id = chat.id
+    status = member.status
 
-    if update.new_chat_member.status in ("member", "administrator"):
+    if status in {
+        ChatMemberStatus.MEMBER,
+        ChatMemberStatus.ADMINISTRATOR,
+        ChatMemberStatus.OWNER,
+    }:
         await add_chat(chat_id)
         try:
             await Safegram.send_message(
                 LOGGER_ID,
-                f"✅ **Bot Added To Group**\n\n📌 `{chat.title}`\n🆔 `{chat.id}`"
+                f"✅ **Bot Added To Group**\n\n📌 `{chat.title}`\n🆔 `{chat_id}`",
             )
-        except:
+        except Exception:
             pass
 
-    elif update.new_chat_member.status in ("kicked", "left"):
+        if status == ChatMemberStatus.MEMBER:
+            try:
+                await Safegram.send_message(
+                    chat_id,
+                    "**🚫 I need admin rights to work. Leaving this group.**",
+                )
+                await Safegram.leave_chat(chat_id)
+            except Exception:
+                pass
+
+    elif status in {ChatMemberStatus.LEFT, ChatMemberStatus.KICKED}:
         await remove_chat(chat_id)
         try:
             await Safegram.send_message(
                 LOGGER_ID,
-                f"❌ **Bot Removed From Group**\n\n📌 `{chat.title}`\n🆔 `{chat.id}`"
+                f"❌ **Bot Removed From Group**\n\n📌 `{chat.title}`\n🆔 `{chat_id}`",
             )
-        except:
-            pass
-
-
-@Safegram.on_chat_member_updated()
-async def auto_leave_if_no_admin(_, update: ChatMemberUpdated):
-    if not update.new_chat_member.user.is_self:
-        return
-
-    chat = update.chat
-    chat_id = chat.id
-
-    if update.new_chat_member.status == "member":
-        try:
-            await Safegram.send_message(
-                chat_id,
-                "**🚫 ɪ ɴᴇᴇᴅ ᴀᴅᴍɪɴ ʀɪɢʜᴛs ᴛᴏ ᴡᴏʀᴋ. ʟᴇᴀᴠɪɴɢ ᴛʜɪs ɢʀᴏᴜᴘ.**"
-            )
-            await Safegram.leave_chat(chat_id)
         except Exception:
             pass
