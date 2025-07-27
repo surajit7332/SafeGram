@@ -20,7 +20,7 @@ async def on_my_join(client: Safegram, chat: "pyrogram.types.Chat", added_by: "p
     link = await client.export_chat_invite_link(chat.id)
     count = await client.get_chat_members_count(chat.id)
     msg = (
-        f"📝 ᴍᴜsɪᴄ ʙᴏᴛ ᴀᴅᴅᴇᴅ ɪɴ ᴀ ɴᴇᴡ ɢʀᴏᴜᴘ\n\n"
+        f"📝 ʙᴏᴛ ᴀᴅᴅᴇᴅ ɪɴ ᴀ ɴᴇᴡ ɢʀᴏᴜᴘ\n\n"
         f"____________________________________\n\n"
         f"📌 ᴄʜᴀᴛ ɴᴀᴍᴇ: {chat.title}\n"
         f"🍂 ᴄʜᴀᴛ ɪᴅ: {chat.id}\n"
