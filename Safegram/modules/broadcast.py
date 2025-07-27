@@ -5,25 +5,32 @@ from pyrogram import filters
 from pyrogram.errors import FloodWait, PeerIdInvalid
 from pyrogram.types import Message
 
-from config import OWNER_ID
+from config import OWNER_ID, LOGGER_ID
 from Safegram import Safegram
 from Safegram.mongo.usersdb import get_all_users
 from Safegram.mongo.chatsdb import get_all_chats
 
-async def send_broadcast(target, message: Message, payload_text: str):
+async def send_broadcast(target, message: Message, payload_text: str, pin: bool = False):
     try:
+        sent_msg = None
         if message.reply_to_message:
             # Send media if present, else send text
             if message.reply_to_message.media:
-                await message.reply_to_message.copy(target)
+                sent_msg = await message.reply_to_message.copy(target)
             elif payload_text:
-                await Safegram.send_message(target, payload_text)
+                sent_msg = await Safegram.send_message(target, payload_text)
         else:
-            await Safegram.send_message(target, payload_text)
+            sent_msg = await Safegram.send_message(target, payload_text)
+        # Pin message if requested and in a group
+        if pin and sent_msg and getattr(sent_msg.chat, "type", None) in ["group", "supergroup"]:
+            try:
+                await sent_msg.pin()
+            except Exception:
+                pass
         return True
     except FloodWait as e:
         await sleep(e.value)
-        return await send_broadcast(target, message, payload_text)  # retry after wait
+        return await send_broadcast(target, message, payload_text, pin)  # retry after wait
     except (PeerIdInvalid, Exception):
         return False
 
@@ -31,13 +38,13 @@ async def send_broadcast(target, message: Message, payload_text: str):
 async def broadcast_handler(_, message: Message):
     """
     Usage:
-    /broadcast [-user] [-group] <message>
+    /broadcast [-user] [-group] [-pin] <message>
     Reply to a message (media/text) + /broadcast to send media/text.
     By default, it sends to all users and groups unless a flag is specified.
     """
     if len(message.command) == 1 and not message.reply_to_message:
         return await message.reply_text(
-            "⚠️ Usage:\n`/broadcast [-user] [-group] <message>`\n"
+            "⚠️ Usage:\n`/broadcast [-user] [-group] [-pin] <message>`\n"
             "Or reply to a media/text message with `/broadcast`",
             quote=True
         )
@@ -45,12 +52,13 @@ async def broadcast_handler(_, message: Message):
     # Parse flags
     user_mode = "-user" in message.text
     group_mode = "-group" in message.text
+    pin_mode = "-pin" in message.text  # <-- new flag
 
     # Get payload
     payload = None
     if len(message.command) > 1:
         payload = message.text.split(None, 1)[1]
-        for flag in ["-user", "-group"]:
+        for flag in ["-user", "-group", "-pin"]:
             payload = payload.replace(flag, "")
         payload = payload.strip()
 
@@ -73,16 +81,23 @@ async def broadcast_handler(_, message: Message):
     sent = failed = 0
 
     for idx, target in enumerate(targets, 1):
-        success = await send_broadcast(target, message, payload)
+        success = await send_broadcast(target, message, payload, pin_mode)
         if success:
             sent += 1
         else:
             failed += 1
         await sleep(0.05)
+
         if idx % 50 == 0:
             await message.reply_text(f"📣 Progress: Sent: `{sent}` | Failed: `{failed}`")
 
     await message.reply_text(
         f"📣 Broadcast completed\n\n✅ Sent: `{sent}`\n❌ Failed: `{failed}`",
         quote=True,
+    )
+
+    # Send stats to log group
+    await Safegram.send_message(
+        LOGGER_ID,
+        f"📣 Broadcast stats:\n\n✅ Sent: `{sent}`\n❌ Failed: `{failed}`"
     )
