@@ -101,6 +101,13 @@ async def broadcast_handler(_, message: Message):
         except (PeerIdInvalid, Exception):
             failed += 1
 
+    # Safely get a preview of the message text for logging
+    msg_text = ""
+    if payload:
+        msg_text = payload
+    elif message.reply_to_message:
+        msg_text = message.reply_to_message.text or message.reply_to_message.caption or ""
+
     # Banner message for log group
     banner_msg = (
         "✅ **Broadcast Completed**\n"
@@ -109,7 +116,7 @@ async def broadcast_handler(_, message: Message):
         f"🔈 Sent: `{sent}`\n"
         f"📌 Pinned: `{pinned}`\n"
         f"❌ Failed: `{failed}`\n"
-        f"📝 Message: {payload or (message.reply_to_message.text if message.reply_to_message else '')[:100]}"
+        f"📝 Message: {msg_text[:100]}"
     )
     try:
         await Safegram.send_message(LOGGER_ID, banner_msg, disable_web_page_preview=True)
