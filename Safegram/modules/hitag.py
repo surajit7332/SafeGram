@@ -1,4 +1,4 @@
-from Prince import app 
+from Safegram import  Safegram as app
 import asyncio
 import random
 from pyrogram import Client, filters
