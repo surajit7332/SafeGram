@@ -21,8 +21,6 @@ from Safegram.mongo.chatsdb import get_all_chats
 
 START_TEXT = """<b><a href="https://t.me/YourBotUsername">ᴜsᴇʀ ᴛᴀɢɢᴇʀ ʙᴏᴛ 🏷️</a></b>
 
-
-
 ʜᴇʏ! ɪ'ᴍ ʏᴏᴜʀ ɢʀᴏᴜᴘ'ꜱ ᴇɴɢᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ✨
 ᴍʏ ᴍɪssɪᴏɴ ɪs ᴛᴏ ᴍᴇɴᴛɪᴏɴ & ɴᴏᴛɪғʏ ᴇᴠᴇʀʏᴏɴᴇ ɪɴ sᴛʏʟᴇ:
 
