@@ -19,9 +19,9 @@ from Safegram.modules.utils import time_formatter, size_formatter
 from Safegram.mongo.usersdb import add_user, get_all_users
 from Safegram.mongo.chatsdb import get_all_chats
 
-START_TEXT = """<b>🏷️ ᴜsᴇʀ ᴛᴀɢɢᴇʀ ʙᴏᴛ 🏷️</b
+START_TEXT = """<b><a href="https://t.me/YourBotUsername">ᴜsᴇʀ ᴛᴀɢɢᴇʀ ʙᴏᴛ 🏷️</a></b>
 
-<b><a href="https://t.me/YourBotUsername">ᴜsᴇʀ ᴛᴀɢɢᴇʀ ʙᴏᴛ 🏷️</a></b>
+
 
 ʜᴇʏ! ɪ'ᴍ ʏᴏᴜʀ ɢʀᴏᴜᴘ'ꜱ ᴇɴɢᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ✨
 ᴍʏ ᴍɪssɪᴏɴ ɪs ᴛᴏ ᴍᴇɴᴛɪᴏɴ & ɴᴏᴛɪғʏ ᴇᴠᴇʀʏᴏɴᴇ ɪɴ sᴛʏʟᴇ:
