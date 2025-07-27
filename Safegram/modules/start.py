@@ -19,9 +19,9 @@ from Safegram.modules.utils import time_formatter, size_formatter
 from Safegram.mongo.usersdb import add_user, get_all_users
 from Safegram.mongo.chatsdb import get_all_chats
 
-START_TEXT = """<b>🤖 ᴄᴏᴘʏʀɪɢʜᴛ & ᴄᴘ ᴘʀᴏᴛᴇᴄᴛɪᴏɴ ʙᴏᴛ 🛡️</b>
+START_TEXT = """<b>🏷️ ᴜsᴇʀ ᴛᴀɢɢᴇʀ ʙᴏᴛ 🏷️</b
 
-🤖 ᴜsᴇʀ ᴛᴀɢɢᴇʀ ʙᴏᴛ 🏷️
+<b><a href="https://t.me/YourBotUsername">ᴜsᴇʀ ᴛᴀɢɢᴇʀ ʙᴏᴛ 🏷️</a></b>
 
 ʜᴇʏ! ɪ'ᴍ ʏᴏᴜʀ ɢʀᴏᴜᴘ'ꜱ ᴇɴɢᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ✨
 ᴍʏ ᴍɪssɪᴏɴ ɪs ᴛᴏ ᴍᴇɴᴛɪᴏɴ & ɴᴏᴛɪғʏ ᴇᴠᴇʀʏᴏɴᴇ ɪɴ sᴛʏʟᴇ:
@@ -132,7 +132,7 @@ async def ping_command(_, message: Message):
 
     try:
         await message.reply_photo(
-            photo="https://files.catbox.moe/1u8hg7.jpg",
+            photo="https://files.catbox.moe/httj0w.jpg",
             caption=(
                 f"🏓 **ᴘᴏɴɢ ʀᴇꜱᴘᴏɴꜱᴇ!**\n\n"
                 f"➪ ᴜᴘᴛɪᴍᴇ: `{uptime}`\n"
@@ -167,7 +167,7 @@ async def stats_command(_, message: Message):
 
     try:
         await message.reply_photo(
-            photo="https://files.catbox.moe/1u8hg7.jpg",
+            photo="https://files.catbox.moe/httj0w.jpg",
             caption=(
                 f"📊 **ʙᴏᴛ ꜱᴛᴀᴛɪꜱᴛɪᴄꜱ**\n\n"
                 f"👥 ᴜꜱᴇʀꜱ: `{len(users)}`\n"
