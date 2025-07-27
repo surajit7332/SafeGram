@@ -21,21 +21,26 @@ from Safegram.mongo.chatsdb import get_all_chats
 
 START_TEXT = """<b>🤖 ᴄᴏᴘʏʀɪɢʜᴛ & ᴄᴘ ᴘʀᴏᴛᴇᴄᴛɪᴏɴ ʙᴏᴛ 🛡️</b>
 
-ʜᴇʏ ᴛʜᴇʀᴇ! ɪ'ᴍ ʏᴏᴜʀ ɢʀᴏᴜᴘ'ꜱ ᴇɴғᴏʀᴄᴇʀ ʀᴏʙᴏᴛ 🤖
-ᴍʏ ᴍɪssɪᴏɴ ɪs ᴛᴏ ᴘʀᴏᴛᴇᴄᴛ ʏᴏᴜʀ ᴄᴏᴍᴍᴜɴɪᴛʏ ғʀᴏᴍ:
+🤖 ᴜsᴇʀ ᴛᴀɢɢᴇʀ ʙᴏᴛ 🏷️
 
-• ғᴀᴋᴇ ᴄᴏᴘʏʀɪɢʜᴛ ʀᴇᴘᴏʀᴛs 🚫
-• ᴄʜɪʟᴅ ᴇxᴘʟᴏɪᴛᴀᴛɪᴏɴ ᴄᴏɴᴛᴇɴᴛ ❌
-• ʟᴏɴɢ ᴀɴᴅ sᴜsᴘɪᴄɪᴏᴜs ᴇᴅɪᴛᴇᴅ ᴍᴇssᴀɢᴇs 📝
-• ɢʀᴏᴜᴘ sᴘᴀᴍ & ɪɴᴛʀᴜsɪᴏɴ 🔐
+ʜᴇʏ! ɪ'ᴍ ʏᴏᴜʀ ɢʀᴏᴜᴘ'ꜱ ᴇɴɢᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ✨
+ᴍʏ ᴍɪssɪᴏɴ ɪs ᴛᴏ ᴍᴇɴᴛɪᴏɴ & ɴᴏᴛɪғʏ ᴇᴠᴇʀʏᴏɴᴇ ɪɴ sᴛʏʟᴇ:
 
-➥ ʜᴏᴡ ᴛᴏ ᴇɴᴀʙʟᴇ ᴘʀᴏᴛᴇᴄᴛɪᴏɴ:
+• ᴛᴀɢ ᴀʟʟ ᴍᴇᴍʙᴇʀꜱ 👥
+• ᴛᴀɢ ᴀᴅᴍɪɴs ᴏɴʟʏ 🛡️
+• ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ / ɢᴏᴏᴅ ɴɪɢʜᴛ ᴛᴀɢ 🌅🌙
+• ʀᴀɴᴅᴏᴍ ʜɪᴛ & ʟɪғᴇ ǫᴜᴏᴛᴇ ᴛᴀɢ 🎯💫
+
+➥ ʜᴏᴡ ᴛᴏ ᴜꜱᴇ:
 1. ➕ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ
-2. 🛡️ ɢʀᴀɴᴛ ᴍᴇ ᴀᴅᴍɪɴ ᴘᴇʀᴍɪssɪᴏɴs
+2. 🛡️ ᴏɴʟʏ ᴀᴅᴍɪɴꜱ ᴄᴀɴ ꜱᴛᴀʀᴛ ᴛᴀɢɢɪɴɢ
+3. 💬 ᴜꜱᴇ ᴄᴏᴍᴍᴀɴᴅꜱ ʟɪᴋᴇ `/utag`, `/admintag`, `/gmhit`, `/gntag`
 
-ᴏɴᴄᴇ ᴇɴᴀʙʟᴇᴅ, ɪ'ʟʟ ᴄᴏɴᴛɪɴᴜᴏᴜsʟʏ ᴍᴏɴɪᴛᴏʀ ᴀɴᴅ ᴀᴄᴛ ᴛᴏ ᴋᴇᴇᴘ ʏᴏᴜʀ ɢʀᴏᴜᴘ sᴀғᴇ ✅
+ғᴏʀ ᴍᴏʀᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ, ᴄʟɪᴄᴋ ᴛʜᴇ **ʜᴇʟᴘ** ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ⬇️
 
-<b><a href=\"https://t.me/SafeGramRobot\">ꜱᴀꜰᴇɢʀᴀᴍʀᴏʙᴏᴛ</a> — ʏᴏᴜʀ ᴅɪɢɪᴛᴀʟ ꜰɪʀᴇᴡᴀʟʟ 🔒</b>"""
+<b><a href="https://t.me/ThePriyanshuOp">ᴏᴡɴᴇʀ</a> — ᴏꜰꜰɪᴄɪᴀʟ ʙᴏᴛ ᴏᴡɴᴇʀ 👑</b>
+<b><a href="https://t.me/best_friends_chatting_grpz0">ꜱᴜᴘᴘᴏʀᴛ</a> — ɢᴇᴛ ʜᴇʟᴘ & ᴀꜱꜱɪꜱᴛᴀɴᴄᴇ 🛠️</b>
+"""
 
 HELP_TEXT = """<b>🔖 ʜᴇʟᴘ ᴍᴇɴᴜ</b>
 
@@ -59,8 +64,14 @@ start_time = time.time()
 
 def get_main_buttons() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
-        [InlineKeyboardButton("➕ ᴀᴅᴅ ᴍᴇ", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
-        [InlineKeyboardButton("🧩 ʜᴇʟᴘ", callback_data="show_help")],
+        [
+            InlineKeyboardButton("➕ ᴀᴅᴅ ᴍᴇ", url=f"https://t.me/{BOT_USERNAME}?startgroup=true"),
+            InlineKeyboardButton("🧩 ʜᴇʟᴘ", callback_data="show_help")
+        ],
+        [
+            InlineKeyboardButton("🛠️ sᴜᴘᴘᴏʀᴛ", url="https://t.me/best_friends_chatting_grpz0"),
+            InlineKeyboardButton("🌀 ᴜᴘᴅᴀᴛᴇ", url="https://t.me/NeoUpdatess"),
+        ],
     ])
 
 def get_ping_stats_buttons() -> InlineKeyboardMarkup:
