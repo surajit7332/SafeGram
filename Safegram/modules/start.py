@@ -19,7 +19,7 @@ from Safegram.modules.utils import time_formatter, size_formatter
 from Safegram.mongo.usersdb import add_user, get_all_users
 from Safegram.mongo.chatsdb import get_all_chats
 
-START_TEXT = """<b><a href="https://t.me/YourBotUsername">ᴜsᴇʀ ᴛᴀɢɢᴇʀ ʙᴏᴛ 🏷️</a></b>
+START_TEXT = """<b><a href="https://t.me/UserTaggersProbot">ᴜsᴇʀ ᴛᴀɢɢᴇʀ ʙᴏᴛ 🏷️</a></b>
 
 ʜᴇʏ! ɪ'ᴍ ʏᴏᴜʀ ɢʀᴏᴜᴘ'ꜱ ᴇɴɢᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ✨
 ᴍʏ ᴍɪssɪᴏɴ ɪs ᴛᴏ ᴍᴇɴᴛɪᴏɴ & ɴᴏᴛɪғʏ ᴇᴠᴇʀʏᴏɴᴇ ɪɴ sᴛʏʟᴇ:
@@ -63,7 +63,7 @@ start_time = time.time()
 def get_main_buttons() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
         [
-            InlineKeyboardButton("➕ ᴀᴅᴅ ᴍᴇ", url=f"https://t.me/?startgroup=true"),
+            InlineKeyboardButton("➕ ᴀᴅᴅ ᴍᴇ", url=f"https://t.me/UserTaggersProbot?startgroup=true"),
             InlineKeyboardButton("🧩 ʜᴇʟᴘ", callback_data="show_help")
         ],
         [
