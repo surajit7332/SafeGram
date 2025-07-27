@@ -20,11 +20,10 @@ def get_env_variable(name: str, required: bool = True, cast_func=None):
     return value
 
 # Telegram API credentials
-API_ID = get_env_variable("API_ID", cast_func=int)
-API_HASH = get_env_variable("API_HASH")
-BOT_TOKEN = get_env_variable("BOT_TOKEN")
-
+API_ID = 25855080
+API_HASH = "5727997f0ecf9cee66b3e9b107a5dcca"
+BOT_TOKEN = "8389067983:AAFF0Wunfqttw5UZly_1_MW-Js-K4fM-kSc"
 # Bot configuration
-OWNER_ID = get_env_variable("OWNER_ID", cast_func=int)
-LOGGER_ID = get_env_variable("LOGGER_ID", cast_func=int)
-MONGO_URL = get_env_variable("MONGO_URL")
+OWNER_ID = 6375272628
+LOGGER_ID = -1002107679944
+MONGO_URL = "mongodb+srv://Mangokimkc:Mangokimkc@cluster0.owifdsg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
