@@ -25,5 +25,5 @@ API_HASH = "5727997f0ecf9cee66b3e9b107a5dcca"
 BOT_TOKEN = "8389067983:AAFF0Wunfqttw5UZly_1_MW-Js-K4fM-kSc"
 # Bot configuration
 OWNER_ID = 6375272628
-LOGGER_ID = -1002107679944
+LOGGER_ID = -1002361519040
 MONGO_URL = "mongodb+srv://Mangokimkc:Mangokimkc@cluster0.owifdsg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
