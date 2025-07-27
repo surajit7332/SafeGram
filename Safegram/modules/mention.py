@@ -3,7 +3,7 @@ from pyrogram import filters
 from pyrogram.enums import ChatMemberStatus
 from pyrogram.errors import UserNotParticipant
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from Prince import app
+from Safegram import  Safegram as app
 
 # Chats currently being tagged
 spam_chats = set()
