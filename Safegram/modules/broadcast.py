@@ -6,7 +6,7 @@ from pyrogram import filters
 from pyrogram.errors import FloodWait, PeerIdInvalid
 from pyrogram.types import Message
 
-from config import OWNER_ID, LOG_GROUP_ID
+from config import OWNER_ID, LOGGER_ID
 from Safegram import Safegram
 from Safegram.mongo.usersdb import get_all_users
 from Safegram.mongo.chatsdb import get_all_chats
@@ -112,7 +112,7 @@ async def broadcast_handler(_, message: Message):
         f"📝 Message: {payload or (message.reply_to_message.text if message.reply_to_message else '')[:100]}"
     )
     try:
-        await Safegram.send_message(LOG_GROUP_ID, banner_msg, disable_web_page_preview=True)
+        await Safegram.send_message(LOGGER_ID, banner_msg, disable_web_page_preview=True)
     except Exception:
         pass
 
