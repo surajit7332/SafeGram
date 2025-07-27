@@ -12,8 +12,8 @@ spam_chats = set()
 END_BUTTONS = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton("💬 Support", url="https://t.me/YourSupportGroup"),
-            InlineKeyboardButton("📢 Update", url="https://t.me/YourUpdateChannel"),
+            InlineKeyboardButton("💬 Support", url="https://t.me/NeoUpdatess"),
+            InlineKeyboardButton("📢 Update", url="https://t.me/best_friends_chatting_grpz0"),
         ]
     ]
 )
