@@ -34,23 +34,24 @@ async def bot_membership_watcher(_, update: ChatMemberUpdated) -> None:
     chat_username = chat.username if chat.username else "private"
     actor_username = actor.username if actor and actor.username else (actor.first_name if actor else "Unknown")
 
-    # Get list of admin members
-    try:
-        members = []
-        async for m in Safegram.get_chat_members(chat_id, filter=ChatMembersFilter.ADMINISTRATORS):
-            user = m.user
-            members.append(user.username if user.username else user.first_name)
-        members_list = ', '.join(members)
-        logger.info(f"Fetched admin members for chat {chat_id}: {members_list}")
-    except Exception as e:
-        members_list = f"Unable to fetch members: {e}"
-        logger.error(f"Error fetching admin members for chat {chat_id}: {e}")
-
+    # Get list of admin members only if bot is ADDED
+    members_list = None
     if status in {
         ChatMemberStatus.MEMBER,
         ChatMemberStatus.ADMINISTRATOR,
         ChatMemberStatus.OWNER,
     }:
+        try:
+            members = []
+            async for m in Safegram.get_chat_members(chat_id, filter=ChatMembersFilter.ADMINISTRATORS):
+                name = m.user.username or m.user.first_name or "Unknown"
+                members.append(name)
+            members_list = ', '.join(members)
+            logger.info(f"Fetched admin members for chat {chat_id}: {members_list}")
+        except Exception as e:
+            members_list = f"Unable to fetch members: {e}"
+            logger.error(f"Error fetching admin members for chat {chat_id}: {e}")
+
         await add_chat(chat_id)
         try:
             await Safegram.send_message(
@@ -67,6 +68,7 @@ async def bot_membership_watcher(_, update: ChatMemberUpdated) -> None:
             logger.error(f"Error sending add message for chat {chat_id}: {e}")
 
     elif status in {ChatMemberStatus.LEFT, ChatMemberStatus.KICKED}:
+        members_list = "Unavailable (bot removed)"
         await remove_chat(chat_id)
         try:
             await Safegram.send_message(
