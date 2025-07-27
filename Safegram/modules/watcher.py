@@ -54,23 +54,3 @@ async def on_my_leave(client: Safegram, chat: "pyrogram.types.Chat", removed_by:
         parse_mode=ParseMode.HTML
     )
     await remove_chat(chat.id)
-
-# Watch for chat member updates to trigger join/leave events
-@Safegram.on_chat_member_updated()
-async def watcher(client: Safegram, update: ChatMemberUpdated):
-    # Bot joined the chat
-    if (
-        update.new_chat_member.user.id == client.me.id
-        and update.old_chat_member.status not in [ChatMemberStatus.MEMBER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.OWNER]
-        and update.new_chat_member.status in [ChatMemberStatus.MEMBER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.OWNER]
-    ):
-        await on_my_join(client, update.chat, update.from_user)
-    # Bot left the chat
-    elif (
-        update.old_chat_member.user.id == client.me.id
-        and update.old_chat_member.status in [ChatMemberStatus.MEMBER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.OWNER]
-        and update.new_chat_member.status == ChatMemberStatus.LEFT
-    ):
-        await on_my_leave(client, update.chat, update.from_user)
-
-
