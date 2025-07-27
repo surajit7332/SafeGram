@@ -63,7 +63,7 @@ start_time = time.time()
 def get_main_buttons() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
         [
-            InlineKeyboardButton("➕ ᴀᴅᴅ ᴍᴇ", url=f"https://t.me/{BOT_USERNAME}?startgroup=true"),
+            InlineKeyboardButton("➕ ᴀᴅᴅ ᴍᴇ", url=f"https://t.me/?startgroup=true"),
             InlineKeyboardButton("🧩 ʜᴇʟᴘ", callback_data="show_help")
         ],
         [
