@@ -35,9 +35,9 @@ async def bot_membership_watcher(_, update: ChatMemberUpdated) -> None:
             )
         except Exception:
             pass
-
-        
-    elif status in {ChatMemberStatus.LEFT, ChatMemberStatus.KICKED}:
+            
+    else:
+        status in {ChatMemberStatus.LEFT, ChatMemberStatus.KICKED}:
         await remove_chat(chat_id)
         try:
             await Safegram.send_message(
