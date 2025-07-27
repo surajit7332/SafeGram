@@ -54,6 +54,14 @@ def get_main_buttons() -> InlineKeyboardMarkup:
         [InlineKeyboardButton("🧩 ʜᴇʟᴘ", callback_data="show_help")],
     ])
 
+def get_ping_stats_buttons() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton("🧩 ʜᴇʟᴘ", callback_data="show_help"),
+            InlineKeyboardButton("➕ ᴀᴅᴅ ᴍᴇ", url=f"https://t.me/{BOT_USERNAME}?startgroup=true"),
+        ]
+    ])
+
 @Safegram.on_message(filters.command("start"))
 async def start_command_handler(_, msg: Message):
     if msg.chat.type == ChatType.PRIVATE and msg.from_user:
@@ -102,15 +110,31 @@ async def ping_command(_, message: Message):
     disk = psutil.disk_usage("/")
     python_version = platform.python_version()
 
-    await message.reply_text(
-        f"🏓 **ᴘᴏɴɢ ʀᴇꜱᴘᴏɴꜱᴇ!**\n\n"
-        f"➪ ᴜᴘᴛɪᴍᴇ: `{uptime}`\n"
-        f"➪ ᴄᴘᴜ: `{cpu}%`\n"
-        f"➪ ᴅɪꜱᴋ: `{size_formatter(disk.used)} / {size_formatter(disk.total)}`\n"
-        f"➪ ꜰʀᴇᴇ: `{size_formatter(disk.free)}`\n"
-        f"➪ ᴘʏᴛʜᴏɴ: `{python_version}`",
-        parse_mode=ParseMode.MARKDOWN,
-    )
+    try:
+        await message.reply_photo(
+            photo="https://files.catbox.moe/1u8hg7.jpg",
+            caption=(
+                f"🏓 **ᴘᴏɴɢ ʀᴇꜱᴘᴏɴꜱᴇ!**\n\n"
+                f"➪ ᴜᴘᴛɪᴍᴇ: `{uptime}`\n"
+                f"➪ ᴄᴘᴜ: `{cpu}%`\n"
+                f"➪ ᴅɪꜱᴋ: `{size_formatter(disk.used)} / {size_formatter(disk.total)}`\n"
+                f"➪ ꜰʀᴇᴇ: `{size_formatter(disk.free)}`\n"
+                f"➪ ᴘʏᴛʜᴏɴ: `{python_version}`"
+            ),
+            reply_markup=get_ping_stats_buttons(),
+            parse_mode=ParseMode.MARKDOWN,
+        )
+    except Exception as e:
+        await message.reply_text(
+            f"🏓 **ᴘᴏɴɢ ʀᴇꜱᴘᴏɴꜱᴇ!**\n\n"
+            f"➪ ᴜᴘᴛɪᴍᴇ: `{uptime}`\n"
+            f"➪ ᴄᴘᴜ: `{cpu}%`\n"
+            f"➪ ᴅɪꜱᴋ: `{size_formatter(disk.used)} / {size_formatter(disk.total)}`\n"
+            f"➪ ꜰʀᴇᴇ: `{size_formatter(disk.free)}`\n"
+            f"➪ ᴘʏᴛʜᴏɴ: `{python_version}`",
+            reply_markup=get_ping_stats_buttons(),
+            parse_mode=ParseMode.MARKDOWN,
+        )
 
 @Safegram.on_message(filters.command("stats"))
 async def stats_command(_, message: Message):
@@ -121,14 +145,32 @@ async def stats_command(_, message: Message):
     ram = psutil.virtual_memory()
     disk = psutil.disk_usage("/")
 
-    await message.reply_text(
-        f"📊 **ʙᴏᴛ ꜱᴛᴀᴛɪꜱᴛɪᴄꜱ**\n\n"
-        f"👥 ᴜꜱᴇʀꜱ: `{len(users)}`\n"
-        f"👨‍👩‍👧‍👦 ɢʀᴏᴜᴘꜱ: `{len(chats)}`\n"
-        f"⏱️ ᴜᴘᴛɪᴍᴇ: `{uptime}`\n\n"
-        f"🧠 ᴄᴘᴜ: `{cpu}%`\n"
-        f"💾 ʀᴀᴍ: `{ram.percent}%`\n"
-        f"🗃️ ᴅɪꜱᴋ: `{size_formatter(disk.used)} / {size_formatter(disk.total)}`\n"
-        f"📂 ꜰʀᴇᴇ: `{size_formatter(disk.free)}`",
-        parse_mode=ParseMode.MARKDOWN,
-    )
+    try:
+        await message.reply_photo(
+            photo="https://files.catbox.moe/1u8hg7.jpg",
+            caption=(
+                f"📊 **ʙᴏᴛ ꜱᴛᴀᴛɪꜱᴛɪᴄꜱ**\n\n"
+                f"👥 ᴜꜱᴇʀꜱ: `{len(users)}`\n"
+                f"👨‍👩‍👧‍👦 ɢʀᴏᴜᴘꜱ: `{len(chats)}`\n"
+                f"⏱️ ᴜᴘᴛɪᴍᴇ: `{uptime}`\n\n"
+                f"🧠 ᴄᴘᴜ: `{cpu}%`\n"
+                f"💾 ʀᴀᴍ: `{ram.percent}%`\n"
+                f"🗃️ ᴅɪꜱᴋ: `{size_formatter(disk.used)} / {size_formatter(disk.total)}`\n"
+                f"📂 ꜰʀᴇᴇ: `{size_formatter(disk.free)}`"
+            ),
+            reply_markup=get_ping_stats_buttons(),
+            parse_mode=ParseMode.MARKDOWN,
+        )
+    except Exception as e:
+        await message.reply_text(
+            f"📊 **ʙᴏᴛ ꜱᴛᴀᴛɪꜱᴛɪᴄꜱ**\n\n"
+            f"👥 ᴜꜱᴇʀꜱ: `{len(users)}`\n"
+            f"👨‍👩‍👧‍👦 ɢʀᴏᴜᴘꜱ: `{len(chats)}`\n"
+            f"⏱️ ᴜᴘᴛɪᴍᴇ: `{uptime}`\n\n"
+            f"🧠 ᴄᴘᴜ: `{cpu}%`\n"
+            f"💾 ʀᴀᴍ: `{ram.percent}%`\n"
+            f"🗃️ ᴅɪꜱᴋ: `{size_formatter(disk.used)} / {size_formatter(disk.total)}`\n"
+            f"📂 ꜰʀᴇᴇ: `{size_formatter(disk.free)}`",
+            reply_markup=get_ping_stats_buttons(),
+            parse_mode=ParseMode.MARKDOWN,
+        )
