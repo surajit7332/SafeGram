@@ -39,12 +39,21 @@ START_TEXT = """<b>🤖 ᴄᴏᴘʏʀɪɢʜᴛ & ᴄᴘ ᴘʀᴏᴛᴇᴄᴛɪ�
 
 HELP_TEXT = """<b>🔖 ʜᴇʟᴘ ᴍᴇɴᴜ</b>
 
-/auth <user_id> - ᴀᴜᴛʜᴏʀɪᴢᴇ ᴀ ᴍᴇᴍʙᴇʀ
-/unauth <user_id> - ʀᴇᴍᴏᴠᴇ ᴀᴜᴛʜ
-/listauth - ʟɪꜱᴛ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ
-/broadcast - ᴛᴏ ɢʀᴏᴜᴘꜱ
-/ping - ʙᴏᴛ ꜱᴛᴀᴛᴜꜱ
-/stats - ᴜꜱᴀɢᴇ ᴅᴀᴛᴀ"""
+🧩 ʜᴇʟᴘ ᴍᴇɴᴜ
+
+• /ping – ʙᴏᴛ ꜱᴛᴀᴛᴜꜱ
+• /stats – ᴜꜱᴀɢᴇ ᴅᴀᴛᴀ
+• /utag – ᴛᴀɢ ᴀʟʟ ᴍᴇᴍʙᴇʀꜱ
+• /admintag – ᴛᴀɢ ᴀʟʟ ᴀᴅᴍɪɴꜱ
+• /gmtag – ᴛᴀɢ ᴡɪᴛʜ ʀᴀɴᴅᴏᴍ ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ ᴍᴇꜱꜱᴀɢᴇ
+• /gntag – ᴛᴀɢ ᴡɪᴛʜ ʀᴀɴᴅᴏᴍ ɢᴏᴏᴅ ɴɪɢʜᴛ ᴍᴇꜱꜱᴀɢᴇ
+• /hitag – ᴛᴀɢ ᴡɪᴛʜ ʀᴀɴᴅᴏᴍ ʜɪᴛ ᴍᴇꜱꜱᴀɢᴇ
+• /lifetag – ᴛᴀɢ ᴡɪᴛʜ ʀᴀɴᴅᴏᴍ ʟɪꜰᴇ ǫᴜᴏᴛᴇ
+• /gmstop – ꜱᴛᴏᴘ ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ ᴛᴀɢɢɪɴɢ
+• /gnstop – ꜱᴛᴏᴘ ɢᴏᴏᴅ ɴɪɢʜᴛ ᴛᴀɢɢɪɴɢ
+• /histop – ꜱᴛᴏᴘ ʜɪᴛ ᴛᴀɢɢɪɴɢ
+• /cancel – ꜱᴛᴏᴘ /utag ᴀɴᴅ /admintag ᴘʀᴏᴄᴇꜱꜱ
+"""
 
 start_time = time.time()
 
@@ -77,7 +86,7 @@ async def start_command_handler(_, msg: Message):
 
     try:
         await msg.reply_photo(
-            photo="https://files.catbox.moe/1u8hg7.jpg",
+            photo="https://files.catbox.moe/httj0w.jpg",
             caption=START_TEXT,
             reply_markup=get_main_buttons(),
             parse_mode=ParseMode.HTML,
