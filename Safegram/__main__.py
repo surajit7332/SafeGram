@@ -27,7 +27,7 @@ async def start_bot():
     await Safegram.send_message(
         LOGGER_ID,
         "**✅ ʙᴏᴛ ɪs ᴀʟɪᴠᴇ ᴀɴᴅ ᴅᴇᴘʟᴏʏᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ!**\n\n"
-        "[ᴅᴇᴠᴇʟᴏᴘᴇʀ: JARVIS](https://t.me/certifiedcoder)",
+        "[ᴅᴇᴠᴇʟᴏᴘᴇʀ: 𝕌𝕞𝕓𝕣𝕖𝕝𝕝𝕒 ℂ𝕠𝕣𝕡𝕠𝕣𝕒𝕥𝕚𝕠𝕟](https://t.me/UmbrellaUCorp)",
         disable_web_page_preview=True
     )
 
