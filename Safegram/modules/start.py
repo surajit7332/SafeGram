@@ -57,8 +57,8 @@ def get_main_buttons() -> InlineKeyboardMarkup:
 def get_ping_stats_buttons() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
         [
-            InlineKeyboardButton("🧩 ʜᴇʟᴘ", callback_data="show_help"),
-            InlineKeyboardButton("➕ ᴀᴅᴅ ᴍᴇ", url=f"https://t.me/{BOT_USERNAME}?startgroup=true"),
+            InlineKeyboardButton("🛠️ sᴜᴘᴘᴏʀᴛ", url="https://t.me/best_friends_chatting_grpz0"),
+            InlineKeyboardButton("🌀 ᴜᴘᴅᴀᴛᴇ", url="https://t.me/NeoUpdatess"),
         ]
     ])
 
