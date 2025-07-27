@@ -36,16 +36,7 @@ async def bot_membership_watcher(_, update: ChatMemberUpdated) -> None:
         except Exception:
             pass
 
-        if status == ChatMemberStatus.MEMBER:
-            try:
-                await Safegram.send_message(
-                    chat_id,
-                    "**🚫 I need admin rights to work. Leaving this group.**",
-                )
-                await Safegram.leave_chat(chat_id)
-            except Exception:
-                pass
-
+        
     elif status in {ChatMemberStatus.LEFT, ChatMemberStatus.KICKED}:
         await remove_chat(chat_id)
         try:
